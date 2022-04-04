@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import WebPlayback from './WebPlayback'
-import Login from './Login'
-import './App.css';
+
+//Pages
+import MainPage from "./pages/MainPage";
+import PageNotFound from "./pages/404";
+
+//Global Style
+import { GlobalStyle } from "./globalStyles";
 
 function App() {
 
@@ -20,9 +26,23 @@ function App() {
   }, []);
 
   return (
+    <Router>
+
+      <GlobalStyle/>
+      
+      <Routes>
+
+        <Route exact path="/"  element={ (token === '') ? <MainPage/> : <WebPlayback token={token} /> } />
+        <Route path="/404" element={<PageNotFound/>} />
+
+      </Routes>
+
+    </Router>
+    /*
     <>
         { (token === '') ? <Login/> : <WebPlayback token={token} /> }
     </>
+    */
   );
 }
 
