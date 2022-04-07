@@ -3,18 +3,19 @@ import songPicture from '../../images/cheems.jpg'
 
 export const SongContainer = styled.div`
     position: relative;
+    display: inline-block;
     margin: auto;
     border-radius: 25px;
+    padding-right: 30%;
     background-color: #CCEFCB;
 `;
 
 export const SongPicture = styled.button`
     position: relative;
-    width: 75px;
-    height: 75px;
+    width: 3.5vw;
+    height: 3.5vw;
     left: 1vw;
     top: 1.5vw;
-    right:1vw;
 
     border-radius: 13px;
     border: none;
@@ -27,8 +28,8 @@ export const SongPicture = styled.button`
 
 export const Title = styled.h1`
     position: relative;
-    bottom: 2.5em;
-    left: 30%;
+    bottom: 2vw;
+    left: 5vw;
 
     color: #000000;
 
@@ -39,8 +40,8 @@ export const Title = styled.h1`
 
 export const AlbumName = styled.h2`
     position: relative;
-    bottom: 2.75em;
-    left: 5.3vw;
+    bottom: 2vw;
+    left:5vw;
 
     color: #757575;
 
@@ -51,8 +52,8 @@ export const AlbumName = styled.h2`
 
 export const ArtistName = styled.h3`
     position: relative;
-    bottom: 2.75em;
-    left: 5.3vw;
+    bottom: 2vw;
+    left: 5vw;
 
     color: #757575;
 

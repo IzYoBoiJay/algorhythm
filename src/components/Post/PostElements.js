@@ -19,8 +19,8 @@ export const ProfilePicture = styled.button`
     background-image: url(${pfp});
     background-size: cover;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 3vw;
+    height: 3vw;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
 
@@ -28,7 +28,7 @@ export const Username = styled.h1`
     position: relative;
     color: #757575;
     font-family: "Inter", sans-serif;
-    font-size: 17px;
+    font-size: 1vw;
     font-weight: 400;
     line-height: 20px;
 `;
@@ -38,7 +38,7 @@ export const PostText = styled.p`
     padding-top: 5%;
     padding-bottom: 5%;
     font-family: "Inter", sans-serif;
-    font-size: 0.8vw;
+    font-size: 1vw;
     font-weight: 400;
     line-height: 20px;
 `;
