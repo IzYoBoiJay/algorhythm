@@ -7,7 +7,7 @@ const Post = () => {
     <PostContainer>
 
         <ProfilePicture/>
-        <Username>Mike</Username>
+        <Username>Mike Wazowski</Username>
         
         <PostText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tincidunt ornare massa eget egestas purus. Donec adipiscing tristique risus nec feugiat. Aliquam faucibus purus in massa tempor. Faucibus et molestie ac feugiat. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla.</PostText>
 
