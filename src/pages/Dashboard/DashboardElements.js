@@ -1,13 +1,8 @@
 import styled from "styled-components";
 
 export const DashContainer = styled.div`
-  height: fit-content;
-  width: 100vw;
-`;
-
-export const DashContainerWithModal = styled.div`
-  height: 100vh;
-  width: 100vw;
-  overflow-y: hidden;
+  height: ${(props) => (props.path === "/" ? "auto" : "100vh")};
+  width: ${(props) => (props.path === "/" ? "auto" : "100vw")};
+  overflow-y: ${(props) => (props.path === "/" ? "auto" : "hidden")};
   overflow-x: hidden;
 `;

@@ -7,18 +7,12 @@ import { DashContainer, DashContainerWithModal } from "./DashboardElements";
 function Dashboard(props) {
   const location = useLocation();
   console.log(location);
-  return location.pathname === "/" ? (
-    <DashContainer>
-      <Outlet />
+  return (
+    <DashContainer path={location.pathname}>
       <Navbar />
       <ExplorePage />
+      <Outlet />
     </DashContainer>
-  ) : (
-    <DashContainerWithModal>
-      <Navbar />
-      <ExplorePage />
-      <Outlet />
-    </DashContainerWithModal>
   );
 }
 
