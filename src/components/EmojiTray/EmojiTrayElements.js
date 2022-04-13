@@ -26,7 +26,7 @@ export const Emojis = styled.div`
     background-color: white;
     border: 1px solid grey;
     border-radius: 12px;
-    margin-top: 5%;
+    margin-top: 15%;
 `
 
 export const EmojiButton = styled.button`
@@ -41,6 +41,11 @@ export const EmojiButton = styled.button`
     display: inline-block;
     font-size: 16px;
     margin: 6px 6px;
+    &:hover {
+        background: gray;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+    }
 `
 export const Counter = styled.div`
     position: absolute;

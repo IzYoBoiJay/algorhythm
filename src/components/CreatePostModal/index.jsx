@@ -5,7 +5,20 @@ import {
   ModalContainer,
   ModalOverlay,
   CloseButton,
+  ModalForm,
+  ModalFormLabel,
+  TextBox,
+  HashtagsBox,
+  SubmitButton
 } from "./CreatePostModalElements";
+
+const track = {
+  name: "",
+  album: {
+    images: [{ url: "" }],
+  },
+  artists: [{ name: "" }],
+};
 
 const CreatePostModal = () => {
   const navigate = useNavigate();
@@ -16,10 +29,12 @@ const CreatePostModal = () => {
   return (
     <ModalOverlay>
       <ModalContainer>
-        <span>THIS IS A MODAL</span>
-        <CloseButton onClick={() => navigate(-1)}>
-          Click here to close
-        </CloseButton>
+      <CloseButton onClick={() => navigate(-1)}/>
+        <ModalForm>
+          <TextBox type="text" id="content" placeholder="What's happening?"/>
+          <HashtagsBox type="text" id="hashtags" placeholder="#bambamdoggo #cheems #sebbynosleepy #pineapplesbelongonpizza #peepthefire"/>
+          <SubmitButton type="submit"/>
+        </ModalForm>
       </ModalContainer>
     </ModalOverlay>
   );
