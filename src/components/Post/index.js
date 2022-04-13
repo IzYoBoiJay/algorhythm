@@ -1,18 +1,20 @@
 import React from 'react'
 import SongCard from '../SongCard';
-import { PostContainer, PostText, ProfilePicture, Username } from './PostElements'
+import EmojiReaction from '../EmojiReaction';
+import { PostContainer, PostText, ProfilePicture, Username, PostFooter } from './PostElements'
 
-const Post = () => {
+const Post = (props) => {
   return (
     <PostContainer>
-
-        <ProfilePicture/>
-        <Username>Mike Wazowski</Username>
-        
-        <PostText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tincidunt ornare massa eget egestas purus. Donec adipiscing tristique risus nec feugiat. Aliquam faucibus purus in massa tempor. Faucibus et molestie ac feugiat. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla.</PostText>
-
-        <SongCard/>
-
+        <ProfilePicture image={props.post.profilepic}/>
+        <Username>{props.post.username}</Username>
+        <PostText>{props.post.postText}</PostText>
+        <SongCard song={props.post.songInfo}/>
+        <PostFooter>
+          {props.post.datetime} &nbsp; &nbsp;
+          {props.post.hashtag.map(hashtag => <span>#{hashtag}&nbsp;&nbsp;</span>)}
+        </PostFooter>
+        <EmojiReaction/>
     </PostContainer>
   )
 }
