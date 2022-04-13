@@ -10,7 +10,7 @@ const Navbar = () => {
           <h1>ALGORHYTHM</h1>
         </NavLink>
 
-        <NavLink to="/404">
+        <NavLink to="/explore">
           <p>Explore</p>
         </NavLink>
 
