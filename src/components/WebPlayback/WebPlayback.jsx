@@ -19,6 +19,7 @@ import {
   ShareText,
 } from "./WebPlaybackElements";
 import GetUserInfo from "../User";
+import { Link } from "react-router-dom";
 
 import UserContext from "../../contexts/UserContext";
 
@@ -35,7 +36,7 @@ function WebPlayback(props) {
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
   const [current_track, setTrack] = useState(track);
-  const token = useContext(UserContext);
+  const token = useContext(UserContext).token;
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -45,7 +46,6 @@ function WebPlayback(props) {
     document.body.appendChild(script);
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-      console.log("token for web playback: " + token);
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
         getOAuthToken: (cb) => {
@@ -137,9 +137,18 @@ function WebPlayback(props) {
           </Box>
         </NowPlaying>
         <ShareContainer>
-          <Share />
-          &nbsp;
-          <ShareText>Share</ShareText>
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "unset",
+              display: "flex",
+            }}
+            to={{ pathname: "/create_post", state: { isModal: true } }}
+          >
+            <Share />
+            &nbsp;
+            <ShareText>Share</ShareText>
+          </Link>
         </ShareContainer>
       </PlaybackContainer>
     );

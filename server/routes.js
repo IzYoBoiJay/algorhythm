@@ -38,7 +38,6 @@ router.get("/auth/login", (req, res, next) => {
 });
 
 router.get("/auth/callback", (req, res) => {
-  console.log("got callback");
   let code = req.query.code;
 
   const formData = new URLSearchParams({
@@ -78,7 +77,7 @@ router.get("/auth/token", (req, res) => {
 
 router.get("/auth/logout", (req, res) => {
   console.log("logging out...");
-  access_token = "";
+  access_token = null;
   res.redirect("/");
 });
 

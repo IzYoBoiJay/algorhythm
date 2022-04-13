@@ -1,7 +1,8 @@
 import { createContext } from "react";
 
 const defaultUser = {
-  access_token: null,
+  token: null,
+  user: null,
 };
 
 const UserContext = createContext({

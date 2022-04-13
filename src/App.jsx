@@ -16,22 +16,39 @@ import PageNotFound from "./pages/404";
 import { GlobalStyle } from "./globalStyles";
 import Login from "./components/Login";
 
-function App() {
-  const [token, setToken] = useState("");
+const App = (props) => {
+  const [location, setLocation] = useState(props.location);
+  const [authState, setAuthState] = useState({
+    token: null,
+    user: null,
+  });
 
   useEffect(() => {
-    async function getToken() {
+    const getToken = async () => {
       const response = await fetch("/auth/token");
       const json = await response.json();
-      setToken(json.access_token);
-      console.log(json);
-    }
+      setAuthState((prevState) => ({ ...prevState, token: json.access_token }));
+    };
     getToken();
   }, []);
 
+  useEffect(() => {
+    const getUserData = async () => {
+      if (authState.token != null) {
+        const settings = {
+          headers: { Authorization: "Bearer " + authState.token },
+        };
+        const response = await fetch("https://api.spotify.com/v1/me", settings);
+        const data = await response.json();
+        setAuthState((prevState) => ({ ...prevState, user: data }));
+      }
+    };
+    getUserData();
+  }, [authState.token]);
+
   return (
     <Router>
-      <UserContext.Provider value={token}>
+      <UserContext.Provider value={authState}>
         <GlobalStyle />
 
         <Routes>
@@ -39,7 +56,7 @@ function App() {
           <Route
             exact
             path="/"
-            element={token === "" ? <Login /> : <Dashboard />}
+            element={authState.token == null ? <Login /> : <Dashboard />}
           />
           <Route path="/404" element={<PageNotFound />} />
         </Routes>
@@ -51,6 +68,6 @@ function App() {
     </>
     */
   );
-}
+};
 
 export default App;
