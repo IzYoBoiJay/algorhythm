@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { useLocation, Routes, Route, Navigate } from "react-router-dom";
 
 import UserContext from "./contexts/UserContext";
 
 //Pages
 import Dashboard from "./pages/Dashboard";
 import PageNotFound from "./pages/404";
+import CreatePostModal from "./components/CreatePostModal/index";
 
 //Global Style
 import { GlobalStyle } from "./globalStyles";
 import Login from "./components/Login";
 
 const App = (props) => {
-  const [location, setLocation] = useState(props.location);
+  let location = useLocation();
   const [authState, setAuthState] = useState({
     token: null,
     user: null,
@@ -41,27 +37,30 @@ const App = (props) => {
         const response = await fetch("https://api.spotify.com/v1/me", settings);
         const data = await response.json();
         setAuthState((prevState) => ({ ...prevState, user: data }));
+      } else {
+        setAuthState((prevState) => ({ ...prevState, user: null }));
       }
     };
     getUserData();
   }, [authState.token]);
 
   return (
-    <Router>
-      <UserContext.Provider value={authState}>
-        <GlobalStyle />
+    <UserContext.Provider value={authState}>
+      <GlobalStyle />
 
-        <Routes>
-          {/* <Route exact path="/"  element={ (token === '') ? <Login/> : <WebPlayback token={token} /> } /> */}
-          <Route
-            exact
-            path="/"
-            element={authState.token == null ? <Login /> : <Dashboard />}
-          />
-          <Route path="/404" element={<PageNotFound />} />
-        </Routes>
-      </UserContext.Provider>
-    </Router>
+      <Routes>
+        {/* <Route exact path="/"  element={ (token === '') ? <Login/> : <WebPlayback token={token} /> } /> */}
+        <Route
+          exact
+          path="/"
+          element={authState.token == null ? <Login /> : <Dashboard />}
+        >
+          <Route exact path="/create_post" element={<CreatePostModal />} />
+        </Route>
+        <Route path="/404" element={<PageNotFound />} />
+      </Routes>
+    </UserContext.Provider>
+
     /*
     <>
         { (token === '') ? <Login/> : <WebPlayback token={token} /> }
