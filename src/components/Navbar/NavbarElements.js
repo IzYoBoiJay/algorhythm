@@ -8,10 +8,10 @@ export const Nav = styled.nav`
   background-color: white;
   align-items: center;
   text-align: center;
-  margin-top: 2%;
+  margin-top: 25px;
   padding: 1rem 3.5rem;
   max-width: 100%;
-  height: 15%;
+  height: 60px;
   gap: 4rem;
   font-size: 1.1rem;
   a:first-child {
