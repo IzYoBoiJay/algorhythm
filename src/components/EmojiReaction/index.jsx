@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { ReactContainer, Tray } from './ReactElements'
+import EmojiTray from '../EmojiTray'
+import { ReactContainer } from './ReactElements'
 
 const emoji_map= {
   fire: '🔥',
