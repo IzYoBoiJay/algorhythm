@@ -143,7 +143,7 @@ function WebPlayback(props) {
               color: "unset",
               display: "flex",
             }}
-            to={{ pathname: "/create_post", state: { isModal: true } }}
+            to={"/create_post"}
           >
             <Share />
             &nbsp;
