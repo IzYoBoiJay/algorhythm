@@ -1,4 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import
+{
+    PlaybackContainer, 
+    SongPicture, 
+    NowPlaying, 
+    NowPlayingName, 
+    NowPlayingArtist, 
+    NowPlayingAlbum,
+    Play, 
+    Pause, 
+    SkipNext, 
+    SkipPre, 
+    Box,
+    MusicNote,
+    WarningText,
+    Warning,
+    ShareContainer,
+    Share,
+    ShareText
+} from './WebPlaybackElements'
+import GetUserInfo from '../User'
 
 const track = {
     name: "",
@@ -63,44 +84,37 @@ function WebPlayback(props) {
             player.connect();
 
         };
-    }, []);
+    }, [props.token]);
 
     if (!is_active) { 
         return (
-            <>
-                <div className="container">
-                    <div className="main-wrapper">
-                        <b> Instance not active. Transfer your playback using your Spotify app </b>
-                    </div>
-                </div>
-            </>)
+            <PlaybackContainer>
+                <GetUserInfo token={props.token}/>
+                <Warning/>
+                <WarningText>Instance not active. Transfer your playback using your Spotify app</WarningText>
+            </PlaybackContainer>)
     } else {
         return (
-            <>
-                <div className="container">
-                    <div className="main-wrapper">
-
-                        <img src={current_track.album.images[0].url} className="now-playing__cover" alt="" />
-
-                        <div className="now-playing__side">
-                            <div className="now-playing__name">{current_track.name}</div>
-                            <div className="now-playing__artist">{current_track.artists[0].name}</div>
-
-                            <button className="btn-spotify" onClick={() => { player.previousTrack() }} >
-                                &lt;&lt;
-                            </button>
-
-                            <button className="btn-spotify" onClick={() => { player.togglePlay() }} >
-                                { is_paused ? "PLAY" : "PAUSE" }
-                            </button>
-
-                            <button className="btn-spotify" onClick={() => { player.nextTrack() }} >
-                                &gt;&gt;
-                            </button>
+            <PlaybackContainer>
+                <GetUserInfo token={props.token}/>
+                <SongPicture image={current_track.album.images[0].url} alt=""/>
+                <NowPlaying>
+                    <NowPlayingName>{current_track.name}</NowPlayingName>
+                    <NowPlayingArtist>{current_track.artists[0].name}</NowPlayingArtist>
+                    <NowPlayingAlbum><MusicNote/>&nbsp;{current_track.album.name}&nbsp;<MusicNote/></NowPlayingAlbum>
+                    <Box>
+                        <SkipPre onClick={() => { player.previousTrack() }}/>
+                        <div onClick={() => { player.togglePlay() }}>
+                            { is_paused ? <Play/>:<Pause/>}
                         </div>
-                    </div>
-                </div>
-            </>
+                        <SkipNext onClick={() => { player.nextTrack() }}/>
+                    </Box>
+                </NowPlaying>
+                <ShareContainer>
+                    <Share/>&nbsp;
+                    <ShareText>Share</ShareText>
+                </ShareContainer>
+            </PlaybackContainer>
         );
     }
 }
