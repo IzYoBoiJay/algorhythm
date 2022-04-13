@@ -1,16 +1,13 @@
 import React from 'react'
 import { AlbumName, ArtistName, SongContainer, SongPicture, Title } from './SongCardElements'
 
-const SongCard = () => {
+const SongCard = (props) => {
   return (
     <SongContainer>
-
-    <SongPicture/>
-
-    <Title>Who the hecc is Bam the Dog?</Title>
-    <AlbumName>Sample Text Album</AlbumName>
-    <ArtistName>Cheems</ArtistName>
-
+      <SongPicture image={props.song.picture}/>
+      <Title>{props.song.title}</Title>
+      <AlbumName>{props.song.album}</AlbumName>
+      <ArtistName>{props.song.artist}</ArtistName>
     </SongContainer>
   )
 }
