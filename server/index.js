@@ -4,7 +4,7 @@ const morgan = require("morgan");
 
 const port = 5000;
 
-global.access_token = "";
+global.access_token = null;
 
 var app = express();
 
