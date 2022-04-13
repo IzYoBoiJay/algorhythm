@@ -5,7 +5,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import WebPlayback from "./WebPlayback";
+
+import UserContext from "./contexts/UserContext";
 
 //Pages
 import Dashboard from "./pages/Dashboard";
@@ -30,17 +31,19 @@ function App() {
 
   return (
     <Router>
-      <GlobalStyle />
+      <UserContext.Provider value={token}>
+        <GlobalStyle />
 
-      <Routes>
-        {/* <Route exact path="/"  element={ (token === '') ? <Login/> : <WebPlayback token={token} /> } /> */}
-        <Route
-          exact
-          path="/"
-          element={token === "" ? <Login /> : <Dashboard token={token} />}
-        />
-        <Route path="/404" element={<PageNotFound />} />
-      </Routes>
+        <Routes>
+          {/* <Route exact path="/"  element={ (token === '') ? <Login/> : <WebPlayback token={token} /> } /> */}
+          <Route
+            exact
+            path="/"
+            element={token === "" ? <Login /> : <Dashboard />}
+          />
+          <Route path="/404" element={<PageNotFound />} />
+        </Routes>
+      </UserContext.Provider>
     </Router>
     /*
     <>

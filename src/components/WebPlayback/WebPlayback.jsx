@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   PlaybackContainer,
   SongPicture,
@@ -20,6 +20,8 @@ import {
 } from "./WebPlaybackElements";
 import GetUserInfo from "../User";
 
+import UserContext from "../../contexts/UserContext";
+
 const track = {
   name: "",
   album: {
@@ -33,6 +35,7 @@ function WebPlayback(props) {
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
   const [current_track, setTrack] = useState(track);
+  const token = useContext(UserContext);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -42,10 +45,11 @@ function WebPlayback(props) {
     document.body.appendChild(script);
 
     window.onSpotifyWebPlaybackSDKReady = () => {
+      console.log("token for web playback: " + token);
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
         getOAuthToken: (cb) => {
-          cb(props.token);
+          cb(token);
         },
         volume: 0.5,
       });
@@ -58,6 +62,18 @@ function WebPlayback(props) {
 
       player.addListener("not_ready", ({ device_id }) => {
         console.log("Device ID has gone offline", device_id);
+      });
+
+      player.addListener("initialization_error", ({ message }) => {
+        console.error(message);
+      });
+
+      player.addListener("authentication_error", ({ message }) => {
+        console.error(message);
+      });
+
+      player.addListener("account_error", ({ message }) => {
+        console.error(message);
       });
 
       player.addListener("player_state_changed", (state) => {
@@ -75,12 +91,12 @@ function WebPlayback(props) {
 
       player.connect();
     };
-  }, [props.token]);
+  }, [token]);
 
   if (!is_active) {
     return (
       <PlaybackContainer>
-        <GetUserInfo token={props.token} />
+        <GetUserInfo />
         <Warning />
         <WarningText>
           Instance not active. Transfer your playback using your Spotify app
@@ -90,7 +106,7 @@ function WebPlayback(props) {
   } else {
     return (
       <PlaybackContainer>
-        <GetUserInfo token={props.token} />
+        <GetUserInfo />
         <SongPicture image={current_track.album.images[0].url} alt="" />
         <NowPlaying>
           <NowPlayingName>{current_track.name}</NowPlayingName>

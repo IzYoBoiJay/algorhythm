@@ -18,9 +18,7 @@ const Navbar = () => {
           <p>Activity</p>
         </NavLink>
 
-        <NavLink to="/404">
-          <p>Logout</p>
-        </NavLink>
+        <a href="/auth/logout">Logout</a>
       </Nav>
     </>
   );

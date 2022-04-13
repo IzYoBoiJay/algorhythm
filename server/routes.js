@@ -2,20 +2,33 @@ const express = require("express");
 require("dotenv").config();
 const axios = require("axios");
 
-var spotify_client_id = process.env.SPOTIFY_CLIENT_ID;
-var spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const generateRandomString = (length) => {
+  let text = "";
+  let possible =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-var spotify_redirect_uri = "http://localhost:3000/auth/callback";
+  for (let i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
+
+let spotify_client_id = process.env.SPOTIFY_CLIENT_ID;
+let spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+
+let spotify_redirect_uri = "http://localhost:3000/auth/callback";
 
 const router = express.Router();
 
-router.get("/auth/login", (req, res) => {
-  var scope = "streaming user-read-email user-read-private";
-  var auth_query_parameters = new URLSearchParams({
+router.get("/auth/login", (req, res, next) => {
+  let scope = "streaming user-read-email user-read-private";
+  let state = generateRandomString(16);
+  let auth_query_parameters = new URLSearchParams({
     response_type: "code",
     client_id: spotify_client_id,
     scope: scope,
     redirect_uri: spotify_redirect_uri,
+    state: state,
   });
 
   res.redirect(
@@ -25,7 +38,8 @@ router.get("/auth/login", (req, res) => {
 });
 
 router.get("/auth/callback", (req, res) => {
-  var code = req.query.code;
+  console.log("got callback");
+  let code = req.query.code;
 
   const formData = new URLSearchParams({
     code: code,
@@ -60,6 +74,12 @@ router.get("/auth/callback", (req, res) => {
 
 router.get("/auth/token", (req, res) => {
   res.json({ access_token: access_token });
+});
+
+router.get("/auth/logout", (req, res) => {
+  console.log("logging out...");
+  access_token = "";
+  res.redirect("/");
 });
 
 module.exports = router;

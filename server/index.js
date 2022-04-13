@@ -8,7 +8,7 @@ global.access_token = "";
 
 var app = express();
 
-app.use(morgan("combined"));
+/* app.use(morgan("combined")); */
 
 app.use("/", routes);
 app.listen(port, () => {
