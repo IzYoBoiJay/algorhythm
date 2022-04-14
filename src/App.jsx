@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, Routes, Route, Navigate } from "react-router-dom";
 
 import UserContext from "./contexts/UserContext";
+import PlaybackContext from "./contexts/PlaybackContext";
 
 //Pages
 import Dashboard from "./pages/Dashboard";
@@ -17,6 +18,13 @@ const App = (props) => {
   const [authState, setAuthState] = useState({
     token: null,
     user: null,
+  });
+
+  const [playbackState, setPlaybackState] = useState({
+    albumArt: null,
+    albumName: null,
+    songName: null,
+    artists: [],
   });
 
   useEffect(() => {
@@ -46,19 +54,21 @@ const App = (props) => {
 
   return (
     <UserContext.Provider value={authState}>
-      <GlobalStyle />
+      <PlaybackContext.Provider value={playbackState}>
+        <GlobalStyle />
 
-      <Routes>
-        {/* <Route exact path="/"  element={ (token === '') ? <Login/> : <WebPlayback token={token} /> } /> */}
-        <Route
-          exact
-          path="/"
-          element={authState.token == null ? <Login /> : <Dashboard />}
-        >
-          <Route exact path="/create_post" element={<CreatePostModal />} />
-        </Route>
-        <Route path="/404" element={<PageNotFound />} />
-      </Routes>
+        <Routes>
+          {/* <Route exact path="/"  element={ (token === '') ? <Login/> : <WebPlayback token={token} /> } /> */}
+          <Route
+            exact
+            path="/"
+            element={authState.token == null ? <Login /> : <Dashboard />}
+          >
+            <Route exact path="/create_post" element={<CreatePostModal />} />
+          </Route>
+          <Route path="/404" element={<PageNotFound />} />
+        </Routes>
+      </PlaybackContext.Provider>
     </UserContext.Provider>
 
     /*
