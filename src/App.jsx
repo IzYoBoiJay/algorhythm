@@ -54,7 +54,7 @@ const App = (props) => {
 
   return (
     <UserContext.Provider value={authState}>
-      <PlaybackContext.Provider value={playbackState}>
+      <PlaybackContext.Provider value={[playbackState, setPlaybackState]}>
         <GlobalStyle />
 
         <Routes>
