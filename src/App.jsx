@@ -24,7 +24,9 @@ const App = (props) => {
     albumArt: null,
     albumName: null,
     songName: null,
-    artists: [],
+    artists: null,
+    isPaused: null,
+    songLink: null,
   });
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SongContainer = styled.div`
     position: relative;
     display: inline-block;
-    width: 100%;
+    width: 16.5vw;
     border-radius: 13px;
     background-color: #CCEFCB;
 `;
