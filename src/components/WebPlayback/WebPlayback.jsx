@@ -22,21 +22,13 @@ import GetUserInfo from "../User";
 import { Link } from "react-router-dom";
 
 import UserContext from "../../contexts/UserContext";
-
-const track = {
-  name: "",
-  album: {
-    images: [{ url: "" }],
-  },
-  artists: [{ name: "" }],
-};
+import PlaybackContext from "../../contexts/PlaybackContext";
 
 function WebPlayback(props) {
-  const [is_paused, setPaused] = useState(false);
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
-  const [current_track, setTrack] = useState(track);
   const token = useContext(UserContext).token;
+  const [playbackState, setPlaybackState] = useContext(PlaybackContext); //Known issue: useContext breaks the dashboard
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -47,7 +39,7 @@ function WebPlayback(props) {
 
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
-        name: "Web Playback SDK",
+        name: "Algorhythm",
         getOAuthToken: (cb) => {
           cb(token);
         },
@@ -81,8 +73,13 @@ function WebPlayback(props) {
           return;
         }
 
-        setTrack(state.track_window.current_track);
-        setPaused(state.paused);
+        setPlaybackState({
+          albumArt: state.track_window.current_track.album.images[0].url,
+          albumName: state.track_window.current_track.album.name,
+          songName: state.track_window.current_track.name,
+          artists: state.track_window.current_track.artists[0].name,
+          isPaused: state.paused,
+        });
 
         player.getCurrentState().then((state) => {
           !state ? setActive(false) : setActive(true);
@@ -107,13 +104,13 @@ function WebPlayback(props) {
     return (
       <PlaybackContainer>
         <GetUserInfo />
-        <SongPicture image={current_track.album.images[0].url} alt="" />
+        <SongPicture image={playbackState.albumArt} alt="" />
         <NowPlaying>
-          <NowPlayingName>{current_track.name}</NowPlayingName>
-          <NowPlayingArtist>{current_track.artists[0].name}</NowPlayingArtist>
+          <NowPlayingName>{playbackState.songName}</NowPlayingName>
+          <NowPlayingArtist>{playbackState.artists}</NowPlayingArtist>
           <NowPlayingAlbum>
             <MusicNote />
-            &nbsp;{current_track.album.name}&nbsp;
+            &nbsp;{playbackState.albumName}&nbsp;
             <MusicNote />
           </NowPlayingAlbum>
           <Box>
@@ -127,7 +124,7 @@ function WebPlayback(props) {
                 player.togglePlay();
               }}
             >
-              {is_paused ? <Play /> : <Pause />}
+              {playbackState.isPaused ? <Play /> : <Pause />}
             </div>
             <SkipNext
               onClick={() => {

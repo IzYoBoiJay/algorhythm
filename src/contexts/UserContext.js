@@ -5,8 +5,6 @@ const defaultUser = {
   user: null,
 };
 
-const UserContext = createContext({
-  user: defaultUser,
-});
+const UserContext = createContext(defaultUser);
 
 export default UserContext;
