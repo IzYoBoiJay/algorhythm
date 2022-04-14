@@ -28,7 +28,7 @@ function WebPlayback(props) {
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
   const token = useContext(UserContext).token;
-  const [playbackState, setPlaybackState] = useContext(PlaybackContext); //Known issue: useContext breaks the dashboard
+  const [playbackState, setPlaybackState] = useContext(PlaybackContext);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -74,11 +74,12 @@ function WebPlayback(props) {
         }
 
         setPlaybackState({
-          albumArt: state.track_window.current_track.album.images[0].url,
-          albumName: state.track_window.current_track.album.name,
+          picture: state.track_window.current_track.album.images[0].url,
+          album: state.track_window.current_track.album.name,
           songName: state.track_window.current_track.name,
-          artists: state.track_window.current_track.artists[0].name,
+          artist: state.track_window.current_track.artists[0].name,
           isPaused: state.paused,
+          songLink: state.track_window.current_track.uri,
         });
 
         player.getCurrentState().then((state) => {
@@ -104,13 +105,13 @@ function WebPlayback(props) {
     return (
       <PlaybackContainer>
         <GetUserInfo />
-        <SongPicture image={playbackState.albumArt} alt="" />
+        <SongPicture image={playbackState.picture} alt="" />
         <NowPlaying>
           <NowPlayingName>{playbackState.songName}</NowPlayingName>
-          <NowPlayingArtist>{playbackState.artists}</NowPlayingArtist>
+          <NowPlayingArtist>{playbackState.artist}</NowPlayingArtist>
           <NowPlayingAlbum>
             <MusicNote />
-            &nbsp;{playbackState.albumName}&nbsp;
+            &nbsp;{playbackState.album}&nbsp;
             <MusicNote />
           </NowPlayingAlbum>
           <Box>

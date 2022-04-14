@@ -47,10 +47,6 @@ export const ModalForm = styled.form`
   margin-bottom: 75px;
 `;
 
-export const ModalFormLabel = styled.label`
-  padding-top: 1em;
-`;
-
 export const TextBox = styled.textarea`
   width: 560px;
   height: 400px;
@@ -96,4 +92,11 @@ export const SubmitButton = styled.input`
     cursor: pointer;
     color: #000;
   }
+`;
+
+export const CurrentlyPlaying = styled.p`
+  position: absolute;
+  font-size: 1vw;
+  right: 45%;
+  padding-top: 100%;
 `;
