@@ -20,7 +20,7 @@ let spotify_redirect_uri = "http://localhost:3000/auth/callback";
 
 const router = express.Router();
 
-router.get("/auth/login", (req, res, next) => {
+router.get("/login", (req, res, next) => {
   let scope = "streaming user-read-email user-read-private";
   let state = generateRandomString(16);
   let auth_query_parameters = new URLSearchParams({
@@ -30,8 +30,6 @@ router.get("/auth/login", (req, res, next) => {
     redirect_uri: spotify_redirect_uri,
     state: state,
   });
-
-  console.log(auth_query_parameters);
 
   res.redirect(
     "https://accounts.spotify.com/authorize/?" +
@@ -73,14 +71,15 @@ router.get("/auth/callback", (req, res) => {
     });
 });
 
-router.get("/auth/token", (req, res) => {
+router.get("/auth_token", (req, res) => {
+  console.log("getting token");
   res.json({ access_token: access_token });
 });
 
-router.get("/auth/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   console.log("logging out...");
   access_token = null;
-  res.redirect("/");
+  res.redirect("http://localhost:3000/");
 });
 
 module.exports = router;

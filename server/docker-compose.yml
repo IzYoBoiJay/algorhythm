@@ -24,3 +24,15 @@ services:
     volumes:
       - ./post-service:/usr/src/app
       - /usr/src/app/node_modules
+    depends_on:
+      - post-db
+  post-db:
+    container_name: post-db
+    image: mongo
+    #z tag fixes permission issues with SELinux
+    user: 1000:1000
+    volumes:
+      - ./post-service/data:/data/db:z
+    ports:
+      - "27017:27017"
+    command: mongod --quiet --logpath /dev/null
