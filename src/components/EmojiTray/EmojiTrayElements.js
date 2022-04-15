@@ -39,7 +39,7 @@ export const EmojiButton = styled.button`
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1px;
     margin: 6px 6px;
     &:hover {
         background: gray;

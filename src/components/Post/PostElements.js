@@ -21,6 +21,20 @@ export const ProfilePicture = styled.button`
     width: 3vw;
     height: 3vw;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    //breakpoints
+    @media screen and (max-width: 900px) {
+        width: 6vw;
+        height: 6vw;
+    }
+    @media screen and (max-width: 750px) {
+        width: 7vw;
+        height: 7vw;
+    }
+    @media screen and (max-width: 600px) {
+        width: 9vw;
+        height: 9vw;
+    }    
 `;
 
 export const Username = styled.h1`
@@ -31,6 +45,17 @@ export const Username = styled.h1`
     font-size: 1vw;
     font-weight: 400;
     line-height: 20px;
+
+    //breakpoints
+    @media screen and (max-width: 900px) {
+        font-size: 2vw;
+    }
+    @media screen and (max-width: 750px) {
+        font-size: 2.5vw;
+    }
+    @media screen and (max-width: 600px) {
+        font-size: 3vw;
+    }    
 `;
 
 export const PostText = styled.p`
@@ -41,6 +66,17 @@ export const PostText = styled.p`
     font-size: 1vw;
     font-weight: 400;
     line-height: 20px;
+    
+    //breakpoints
+    @media screen and (max-width: 900px) {
+        font-size: 2vw;
+    }
+    @media screen and (max-width: 750px) {
+        font-size: 2.5vw;
+    }
+    @media screen and (max-width: 600px) {
+        font-size: 3vw;
+    }
 `;
 
 export const PostFooter = styled.h1`
@@ -51,4 +87,15 @@ export const PostFooter = styled.h1`
     font-size: 1vw;
     font-weight: 400;
     line-height: 20px;
+
+        //breakpoints
+        @media screen and (max-width: 900px) {
+        font-size: 2vw;
+    }
+    @media screen and (max-width: 750px) {
+        font-size: 2.5vw;
+    }
+    @media screen and (max-width: 600px) {
+        font-size: 3vw;
+    }
 `;

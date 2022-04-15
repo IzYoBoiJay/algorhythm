@@ -96,7 +96,7 @@ export const SubmitButton = styled.input`
 
 export const CurrentlyPlaying = styled.p`
   position: absolute;
-  font-size: 1vw;
-  right: 45%;
+  font-size: 16px;
+  right: 35%;
   padding-top: 100%;
 `;
