@@ -38,6 +38,16 @@ export const NowPlayingName = styled.h1`
   font-family: "Inter", sans-serif;
   font-size: 1.1vw;
   font-weight: 550;
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    font-size: 2.1vw;
+  }
+  @media screen and (max-width: 750px) {
+    font-size: 2.6vw;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 3.1vw;
+  }     
 `;
 
 export const NowPlayingArtist = styled.h2`
@@ -47,6 +57,17 @@ export const NowPlayingArtist = styled.h2`
   font-size: 1.1vw;
   padding-top: 7px;
   font-weight: 400;
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    font-size: 2.1vw;
+  }
+  @media screen and (max-width: 750px) {
+    font-size: 2.6vw;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 3.1vw;
+  }     
+  
 `;
 
 export const NowPlayingAlbum = styled.h2`
@@ -56,6 +77,16 @@ export const NowPlayingAlbum = styled.h2`
   font-size: 1.1vw;
   padding-top: 7px;
   font-weight: 500;
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    font-size: 2.1vw;
+  }
+  @media screen and (max-width: 750px) {
+    font-size: 2.6vw;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 3.1vw;
+  }     
 `;
 
 export const WarningText = styled.h1`
@@ -66,6 +97,16 @@ export const WarningText = styled.h1`
   font-size: 1vw;
   padding-top: 10px;
   font-weight: 400;
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    font-size: 2vw;
+  }
+  @media screen and (max-width: 750px) {
+    font-size: 2.5vw;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 3vw;
+  }     
 `;
 
 export const Box = styled.div`
@@ -88,11 +129,31 @@ export const ShareText = styled.h2`
   font-size: 1vw;
   padding-top: 1.5px;
   font-weight: 500;
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    font-size: 2.5vw;
+  }
+  @media screen and (max-width: 750px) {
+    font-size: 3vw;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 3.5vw;
+  }     
 `;
 
 export const Share = styled(FiShare)`
   color: #585858;
   font-size: 1.3vw;
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    font-size: 2.3vw;
+  }
+  @media screen and (max-width: 750px) {
+    font-size: 2.8vw;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 3.3vw;
+  }       
 `;
 
 export const Play = styled(BsPlayCircle)`
