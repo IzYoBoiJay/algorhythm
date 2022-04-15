@@ -17,7 +17,7 @@ function Login() {
           <LoginP>
             Hop on the beat and see other people share what they're jamming to
           </LoginP>
-          <LoginHyperlink href="http://localhost:5000/auth/login">
+          <LoginHyperlink href="http://localhost:5000/login">
             Login with Spotify
           </LoginHyperlink>
         </LoginItems>
