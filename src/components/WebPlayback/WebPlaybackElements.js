@@ -6,9 +6,7 @@ import { RiErrorWarningLine } from "react-icons/ri";
 import { FiShare } from "react-icons/fi";
 
 export const PlaybackContainer = styled.div`
-  display: flex;
   flex-direction: column;
-  align-items: center;
   position: relative;
   border-radius: 20px;
   padding: 13%;
@@ -119,7 +117,10 @@ export const Box = styled.div`
 
 export const ShareContainer = styled.div`
   padding: 5px;
-  width: fit-content;
+  // width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const ShareText = styled.h2`
@@ -131,14 +132,8 @@ export const ShareText = styled.h2`
   font-weight: 500;
   //breakpoints
   @media screen and (max-width: 900px) {
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
-  @media screen and (max-width: 750px) {
-    font-size: 3vw;
-  }
-  @media screen and (max-width: 600px) {
-    font-size: 3.5vw;
-  }     
 `;
 
 export const Share = styled(FiShare)`
@@ -186,7 +181,8 @@ export const SkipPre = styled(BiSkipPrevious)`
 
 export const MusicNote = styled(FaItunesNote)`
   color: #585858;
-  font-size: 0.9vw;
+  padding-top: 1.5px;
+  transform: scale(1);
 `;
 
 export const Warning = styled(RiErrorWarningLine)`
