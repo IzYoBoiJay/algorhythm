@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  auth-service:
+    container_name: auth-service
+    restart: always
+    build: ./auth-service
+    environment:
+      NODE_ENV: production
+    ports:
+      - 5000:3000
+    volumes:
+      - ./auth-service:/usr/src/app
+      - /usr/src/app/node_modules
+
+  post-service:
+    container_name: post-service
+    restart: always
+    build: ./post-service
+    environment:
+      NODE_ENV: production
+    ports:
+      - 5001:3000
+    volumes:
+      - ./post-service:/usr/src/app
+      - /usr/src/app/node_modules

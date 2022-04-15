@@ -1,0 +1,16 @@
+{
+  "name": "algr-server",
+  "version": "1.0.0",
+  "description": "Authentication service for the Algorhythm website",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect=0.0.0.0 index.js"
+  },
+  "author": "shnandez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.3.0",
+    "dotenv": "^16.0.0"
+  }
+}

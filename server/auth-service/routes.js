@@ -1,6 +1,6 @@
 const express = require("express");
-require("dotenv").config();
 const axios = require("axios");
+require("dotenv").config();
 
 const generateRandomString = (length) => {
   let text = "";
@@ -30,6 +30,8 @@ router.get("/auth/login", (req, res, next) => {
     redirect_uri: spotify_redirect_uri,
     state: state,
   });
+
+  console.log(auth_query_parameters);
 
   res.redirect(
     "https://accounts.spotify.com/authorize/?" +

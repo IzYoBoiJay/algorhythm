@@ -18,7 +18,7 @@ const Navbar = () => {
           <p>Activity</p>
         </NavLink>
 
-        <a href="/auth/logout">Logout</a>
+        <a href="http://localhost:3000/auth/logout">Logout</a>
       </Nav>
     </>
   );
