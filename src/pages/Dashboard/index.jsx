@@ -6,7 +6,6 @@ import { DashContainer } from "./DashboardElements";
 
 function Dashboard(props) {
   const location = useLocation();
-  console.log(location);
   return (
     <DashContainer path={location.pathname}>
       <Navbar />

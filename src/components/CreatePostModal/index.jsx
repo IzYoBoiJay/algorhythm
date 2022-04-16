@@ -23,7 +23,6 @@ const CreatePostModal = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(input);
     axios
       .post(
         window.location.protocol +
@@ -37,7 +36,9 @@ const CreatePostModal = () => {
         }
       )
       .then((response) => {
-        console.log(response);
+        if (response.status === 200) {
+          navigate(-1);
+        }
       });
   };
 
