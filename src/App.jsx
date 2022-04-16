@@ -4,6 +4,8 @@ import { useLocation, Routes, Route, Navigate } from "react-router-dom";
 import UserContext from "./contexts/UserContext";
 import PlaybackContext from "./contexts/PlaybackContext";
 
+import axios from "axios";
+
 //Pages
 import Dashboard from "./pages/Dashboard";
 import PageNotFound from "./pages/404";
@@ -29,6 +31,23 @@ const App = (props) => {
     songLink: null,
   });
 
+  const [posts, setPosts] = useState();
+
+  useEffect(() => {
+    axios
+      .get(
+        window.location.protocol +
+          "//" +
+          window.location.hostname +
+          ":5001/get_posts"
+      )
+      .then((response) => {
+        if (response.status === 200) setPosts(response.data);
+      });
+  }, []);
+
+  useEffect(() => console.log(posts), [posts]);
+
   useEffect(() => {
     const getToken = async () => {
       const response = await fetch(
@@ -38,7 +57,6 @@ const App = (props) => {
           ":5000/auth_token"
       );
       const json = await response.json();
-      console.log(response);
       setAuthState((prevState) => ({ ...prevState, token: json.access_token }));
     };
     getToken();
