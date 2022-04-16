@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import ExplorePage from "../ExplorePage";
 import { Outlet, useLocation } from "react-router-dom";
-import { DashContainer, DashContainerWithModal } from "./DashboardElements";
+import { DashContainer } from "./DashboardElements";
 
 function Dashboard(props) {
   const location = useLocation();

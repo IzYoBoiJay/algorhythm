@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
@@ -21,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "cd server && docker-compose up --force-recreate --build",
+    "server": "cd server && docker-compose down && docker-compose build --no-cache && docker-compose up",
     "dev": "run-p server start "
   },
   "eslintConfig": {

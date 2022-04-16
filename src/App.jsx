@@ -31,7 +31,12 @@ const App = (props) => {
 
   useEffect(() => {
     const getToken = async () => {
-      const response = await fetch("http://localhost:5000/auth_token");
+      const response = await fetch(
+        window.location.protocol +
+          "//" +
+          window.location.hostname +
+          ":5000/auth_token"
+      );
       const json = await response.json();
       console.log(response);
       setAuthState((prevState) => ({ ...prevState, token: json.access_token }));
@@ -55,10 +60,6 @@ const App = (props) => {
     getUserData();
   }, [authState.token]);
 
-  useEffect(() => {
-    console.log(playbackState);
-  }, [playbackState]);
-
   return (
     <UserContext.Provider value={authState}>
       <PlaybackContext.Provider value={[playbackState, setPlaybackState]}>
@@ -71,7 +72,7 @@ const App = (props) => {
             path="/"
             element={authState.token == null ? <Login /> : <Dashboard />}
           >
-            <Route exact path="/create_post" element={<CreatePostModal />} />
+            <Route exact path="/share" element={<CreatePostModal />} />
           </Route>
           <Route path="/404" element={<PageNotFound />} />
         </Routes>
