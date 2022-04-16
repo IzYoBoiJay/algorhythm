@@ -141,7 +141,7 @@ function WebPlayback(props) {
               color: "unset",
               display: "flex",
             }}
-            to={"/create_post"}
+            to={"/share"}
           >
             <Share />
             &nbsp;

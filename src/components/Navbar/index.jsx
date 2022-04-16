@@ -18,7 +18,16 @@ const Navbar = () => {
           <p>Activity</p>
         </NavLink>
 
-        <a href="http://localhost:5000/logout">Logout</a>
+        <a
+          href={
+            window.location.protocol +
+            "//" +
+            window.location.hostname +
+            ":5000/logout"
+          }
+        >
+          Logout
+        </a>
       </Nav>
     </>
   );
