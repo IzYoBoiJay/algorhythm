@@ -44,6 +44,7 @@ const CreatePostModal = () => {
           album: playbackState.album,
           artist: playbackState.artist,
           songLink: playbackState.songLink,
+          created_at: Date.now(),
         }
       )
       .then((response) => {

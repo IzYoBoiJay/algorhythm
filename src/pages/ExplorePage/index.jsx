@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Post from "../../components/Post";
 import WebPlayback from "../../components/WebPlayback/WebPlayback";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-
+import {ExploreContainer} from "./ExplorePageElements";
 import PostContext from "../../contexts/PostContext";
 
 const ExplorePage = () => {
@@ -10,14 +10,16 @@ const ExplorePage = () => {
   const [posts, setPosts] = useContext(PostContext);
   
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
-      <Masonry gutter="20px">
-        <WebPlayback/>
-        {posts.map((post) => (
-          <Post post={post} />
-        ))}
-      </Masonry>
-    </ResponsiveMasonry>
+    <ExploreContainer>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
+        <Masonry gutter="20px">
+          <WebPlayback/>
+          {posts.map((post) => (
+            <Post post={post} />
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
+    </ExploreContainer>
   );
 };
 
