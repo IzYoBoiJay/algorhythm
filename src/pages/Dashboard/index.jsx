@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import ExplorePage from "../ExplorePage";
+import ExplorePage from "../ExplorePage/ExplorePage";
 import { Outlet, useLocation } from "react-router-dom";
 import { DashContainer } from "./DashboardElements";
 

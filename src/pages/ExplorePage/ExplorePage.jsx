@@ -1,14 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import Post from "../components/Post";
-import WebPlayback from "../components/WebPlayback/WebPlayback";
+import Post from "../../components/Post";
+import WebPlayback from "../../components/WebPlayback/WebPlayback";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+
+import PostContext from "../../contexts/PostContext";
+
+export const ExploreContainer = styled.section`
+  padding: 50px;
+`;
+
+const ExplorePage = (props) => {
+
+  const [posts, setPosts] = useContext(PostContext);
+  
+  return (
+    <ExploreContainer>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
+        <Masonry gutter="20px">
+          <WebPlayback />
+          {posts.map((post) => (
+            <Post post={post} />
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
+    </ExploreContainer>
+  );
+};
+
+export default ExplorePage;
 
 /* Fake data */
 
-import songPicture from "../images/cheems.jpg";
-import pfp from "../images/bruh.jpg";
+//import songPicture from "../images/cheems.jpg";
+//import pfp from "../images/bruh.jpg";
 
+/*
 const posts = [
   {
     id: 1,
@@ -108,24 +135,4 @@ const posts = [
     hashtag: ["sample", "sample2"],
   },
 ];
-
-export const ExploreContainer = styled.section`
-  padding: 50px;
-`;
-
-const ExplorePage = (props) => {
-  return (
-    <ExploreContainer>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
-        <Masonry gutter="20px">
-          <WebPlayback />
-          {posts.map((post) => (
-            <Post post={post} />
-          ))}
-        </Masonry>
-      </ResponsiveMasonry>
-    </ExploreContainer>
-  );
-};
-
-export default ExplorePage;
+*/

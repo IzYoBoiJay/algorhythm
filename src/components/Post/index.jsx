@@ -5,15 +5,16 @@ import EmojiTray from '../EmojiTray'
 import { PostContainer, PostText, ProfilePicture, Username, PostFooter } from './PostElements'
 
 const Post = (props) => {
+  console.log(props.post.text);
   return (
     <PostContainer>
         <ProfilePicture image={props.post.profilepic}/>
         <Username>{props.post.username}</Username>
-        <PostText>{props.post.postText}</PostText>
-        <SongCard song={props.post.songInfo}/>
+        <PostText>{props.post.text}</PostText>
+        <SongCard song={props.post}/>
         <PostFooter>
-          {props.post.datetime} &nbsp; &nbsp;
-          {props.post.hashtag.map(hashtag => <span>#{hashtag}&nbsp;&nbsp;</span>)}
+          {props.post.created_at} &nbsp; &nbsp;
+          {props.post.tags.map(hashtag => <span>{hashtag}&nbsp;&nbsp;</span>)}
         </PostFooter>
         <EmojiTray/>
         <EmojiReaction/>

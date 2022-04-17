@@ -3,6 +3,7 @@ import { useLocation, Routes, Route, Navigate } from "react-router-dom";
 
 import UserContext from "./contexts/UserContext";
 import PlaybackContext from "./contexts/PlaybackContext";
+import PostContext from "./contexts/PostContext";
 
 import axios from "axios";
 
@@ -17,6 +18,7 @@ import Login from "./components/Login";
 
 const App = (props) => {
   let location = useLocation();
+
   const [authState, setAuthState] = useState({
     token: null,
     user: null,
@@ -81,19 +83,21 @@ const App = (props) => {
   return (
     <UserContext.Provider value={authState}>
       <PlaybackContext.Provider value={[playbackState, setPlaybackState]}>
-        <GlobalStyle />
+        <PostContext.Provider value={[posts, setPosts]}>
+          <GlobalStyle />
 
-        <Routes>
-          {/* <Route exact path="/"  element={ (token === '') ? <Login/> : <WebPlayback token={token} /> } /> */}
-          <Route
-            exact
-            path="/"
-            element={authState.token == null ? <Login /> : <Dashboard />}
-          >
-            <Route exact path="/share" element={<CreatePostModal />} />
-          </Route>
-          <Route path="/404" element={<PageNotFound />} />
-        </Routes>
+          <Routes>
+            {/* <Route exact path="/"  element={ (token === '') ? <Login/> : <WebPlayback token={token} /> } /> */}
+            <Route
+              exact
+              path="/"
+              element={authState.token == null ? <Login /> : <Dashboard />}
+            >
+              <Route exact path="/share" element={<CreatePostModal />} />
+            </Route>
+            <Route path="/404" element={<PageNotFound />} />
+          </Routes>
+        </PostContext.Provider>
       </PlaybackContext.Provider>
     </UserContext.Provider>
 
