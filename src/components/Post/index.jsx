@@ -5,7 +5,6 @@ import EmojiTray from '../EmojiTray'
 import { PostContainer, PostText, ProfilePicture, Username, PostFooter } from './PostElements'
 
 const Post = (props) => {
-  console.log(props.post.text);
   return (
     <PostContainer>
         <ProfilePicture image={props.post.profilepic}/>

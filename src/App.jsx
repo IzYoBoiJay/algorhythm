@@ -46,7 +46,7 @@ const App = (props) => {
       .then((response) => {
         if (response.status === 200) setPosts(response.data);
       });
-  }, []);
+  }, [useLocation().pathname]);
 
   useEffect(() => console.log(posts), [posts]);
 
