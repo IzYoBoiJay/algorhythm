@@ -7,6 +7,7 @@ export const UserContainer = styled.div`
 `;
 
 export const ProfilePicture = styled.div`
+  cursor: pointer;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -19,17 +20,17 @@ export const ProfilePicture = styled.div`
   height: 3vw;
   //breakpoints
   @media screen and (max-width: 900px) {
-      width: 6vw;
-      height: 6vw;
+    width: 6vw;
+    height: 6vw;
   }
   @media screen and (max-width: 750px) {
-      width: 7vw;
-      height: 7vw;
+    width: 7vw;
+    height: 7vw;
   }
   @media screen and (max-width: 600px) {
-      width: 9vw;
-      height: 9vw;
-  }   
+    width: 9vw;
+    height: 9vw;
+  }
 `;
 export const UsernameContainer = styled.div`
   margin: 6%;
@@ -41,7 +42,7 @@ export const UsernameContainer = styled.div`
   padding-bottom: 5px;
   border-radius: 23px;
   background-color: #dbf4db;
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
 `;
 export const Username = styled.h1`
   text-align: center;
@@ -53,12 +54,12 @@ export const Username = styled.h1`
   line-height: 20px;
   //breakpoints
   @media screen and (max-width: 900px) {
-      font-size: 2vw;
+    font-size: 2vw;
   }
   @media screen and (max-width: 750px) {
-      font-size: 2.5vw;
+    font-size: 2.5vw;
   }
   @media screen and (max-width: 600px) {
-      font-size: 3vw;
-  } 
+    font-size: 3vw;
+  }
 `;

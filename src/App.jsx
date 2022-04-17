@@ -32,7 +32,7 @@ const App = (props) => {
     songLink: null,
   });
 
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     axios
@@ -59,6 +59,7 @@ const App = (props) => {
       );
       const json = await response.json();
       setAuthState((prevState) => ({ ...prevState, token: json.access_token }));
+      console.log(json);
     };
     getToken();
   }, []);

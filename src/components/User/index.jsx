@@ -24,6 +24,7 @@ function User(props) {
                 : DefaultUserSvg
             }
             alt="Avatar"
+            onClick={() => (window.location.href = profile.uri)}
           />
           <UsernameContainer width={profile.display_name.length * 25}>
             <Username>{profile.display_name}</Username>
