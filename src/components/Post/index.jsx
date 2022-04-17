@@ -8,19 +8,23 @@ import { PostContainer, PostText, ProfilePicture, Username, PostFooter } from '.
 const Post = (props) => {
   return (
     <PostContainer>
-        <ProfilePicture image={props.post.profilepic}/>
-        <Username>{props.post.username}</Username>
-        <PostText>{props.post.text}</PostText>
-        <SongCard song={props.post}/>
-        <PostFooter>
-          <TimeAgo datetime={props.post.created_at} opts={{ minInterval: '60' }} /> 
-          &nbsp; &nbsp;
-          {props.post.tags.map(hashtag => <span>{hashtag}&nbsp;&nbsp;</span>)}
-        </PostFooter>
-        <EmojiTray/>
-        <EmojiReaction/>
+      <ProfilePicture
+        image={props.post.profilepic}
+        onClick={() => (window.location.href = props.post.userLink)}
+      />
+      <Username>{props.post.username}</Username>
+      <PostText>{props.post.text}</PostText>
+      <SongCard song={props.post} />
+      <PostFooter>
+        <TimeAgo datetime={props.post.created_at} opts={{ minInterval: '60' }} /> 
+        {props.post.tags.map((hashtag) => (
+          <span>{hashtag}&nbsp;&nbsp;</span>
+        ))}
+      </PostFooter>
+      <EmojiTray />
+      <EmojiReaction />
     </PostContainer>
-  )
-}
+  );
+};
 
 export default Post;

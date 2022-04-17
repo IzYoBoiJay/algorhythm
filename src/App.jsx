@@ -18,7 +18,6 @@ import Login from "./components/Login";
 
 const App = (props) => {
   let location = useLocation();
-
   const [authState, setAuthState] = useState({
     token: null,
     user: null,
@@ -33,7 +32,7 @@ const App = (props) => {
     songLink: null,
   });
 
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     axios
@@ -60,6 +59,7 @@ const App = (props) => {
       );
       const json = await response.json();
       setAuthState((prevState) => ({ ...prevState, token: json.access_token }));
+      console.log(json);
     };
     getToken();
   }, []);
