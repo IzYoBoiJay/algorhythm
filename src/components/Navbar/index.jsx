@@ -23,7 +23,7 @@ const Navbar = () => {
             window.location.protocol +
             "//" +
             window.location.hostname +
-            ":5000/logout"
+            ":4000/logout"
           }
         >
           Logout

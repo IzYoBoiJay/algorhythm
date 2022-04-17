@@ -55,7 +55,7 @@ const App = (props) => {
         window.location.protocol +
           "//" +
           window.location.hostname +
-          ":5000/auth_token"
+          ":4000/auth_token"
       );
       const json = await response.json();
       setAuthState((prevState) => ({ ...prevState, token: json.access_token }));
