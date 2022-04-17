@@ -20,7 +20,7 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - 5001:3000
+      - 4001:3000
     volumes:
       - ./post-service:/usr/src/app
       - /usr/src/app/node_modules

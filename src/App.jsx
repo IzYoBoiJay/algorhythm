@@ -40,7 +40,7 @@ const App = (props) => {
         window.location.protocol +
           "//" +
           window.location.hostname +
-          ":5001/get_posts"
+          ":4001/get_posts"
       )
       .then((response) => {
         if (response.status === 200) setPosts(response.data);

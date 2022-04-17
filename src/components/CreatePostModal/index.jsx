@@ -32,7 +32,7 @@ const CreatePostModal = () => {
         window.location.protocol +
           "//" +
           window.location.hostname +
-          ":5001/create_post",
+          ":4001/create_post",
         {
           text: input.text,
           tags: input.tags.split(" "),
