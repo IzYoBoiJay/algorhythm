@@ -10,7 +10,6 @@ export const PlaybackContainer = styled.div`
   position: relative;
   border-radius: 20px;
   padding: 13%;
-  height: 50%;
   background-color: #ccefcb;
 `;
 

@@ -5,6 +5,9 @@ import axios from "axios";
 
 import PlaybackContext from "../../contexts/PlaybackContext";
 
+import UserContext from "../../contexts/UserContext";
+import DefaultUserSvg from "../../assets/default-user.svg";
+
 import {
   ModalContainer,
   ModalOverlay,
@@ -20,6 +23,7 @@ const CreatePostModal = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState();
   const [playbackState, setPlaybackState] = useContext(PlaybackContext);
+  const profile = useContext(UserContext).user;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,6 +36,13 @@ const CreatePostModal = () => {
         {
           text: input.text,
           tags: input.tags.split(" "),
+          username: profile.display_name,
+          userLink: profile.uri,
+          profilepic: (profile.images.length > 0 && profile.images[0].url ? profile.images[0].url : DefaultUserSvg),
+          picture: playbackState.picture,
+          title: playbackState.songName,
+          album: playbackState.album,
+          artist: playbackState.artist,
           songLink: playbackState.songLink,
         }
       )
