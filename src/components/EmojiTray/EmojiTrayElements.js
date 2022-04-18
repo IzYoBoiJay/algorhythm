@@ -18,6 +18,20 @@ export const TrayButtonIcon = styled(Smiley)`
     height: 1.25vw;
     right: 0.2vw;
     bottom: 0.1vw;
+
+    //breakpoints
+    @media screen and (max-width: 900px) {
+        width: 2.25vw;
+        height: 2.25vw;        
+    }
+    @media screen and (max-width: 750px) {
+        width: 3.25vw;
+        height: 3.25vw;       
+    }
+    @media screen and (max-width: 600px) {
+        width: 3.55vw;
+        height: 3.55vw;       
+    }    
 `
 
 export const Emojis = styled.div`
@@ -27,6 +41,8 @@ export const Emojis = styled.div`
     border: 1px solid grey;
     border-radius: 12px;
     margin-top: 15%;
+    margin-right: 2%;
+
 `
 
 export const EmojiButton = styled.button`
@@ -35,11 +51,11 @@ export const EmojiButton = styled.button`
     border: 1px solid grey;
     border-radius: 12px;
     color: white;
-    padding: 20px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1px;
+    font-size: 20px;
     margin: 6px 6px;
     &:hover {
         background: gray;
