@@ -80,16 +80,16 @@ export const PostText = styled.p`
 `;
 
 export const PostFooter = styled.h1`
-    padding-top: 10%;
     position: relative;
+    padding-top: 10%;
     color: #757575;
     font-family: "Inter", sans-serif;
     font-size: 1vw;
     font-weight: 400;
     line-height: 20px;
 
-        //breakpoints
-        @media screen and (max-width: 900px) {
+    //breakpoints
+    @media screen and (max-width: 900px) {
         font-size: 2vw;
     }
     @media screen and (max-width: 750px) {

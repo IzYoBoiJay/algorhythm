@@ -17,9 +17,9 @@ const Post = (props) => {
       <SongCard song={props.post} />
       <PostFooter>
         <TimeAgo datetime={props.post.created_at} opts={{ minInterval: '60' }} /> 
-        &nbsp;&nbsp;
+        &ensp;
         {props.post.tags.map((hashtag) => (
-          <span>{hashtag}&nbsp;&nbsp;</span>
+          <span>{hashtag}&ensp;</span>
         ))}
       </PostFooter>
       <EmojiTray />
