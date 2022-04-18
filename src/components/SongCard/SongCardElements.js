@@ -81,6 +81,7 @@ export const AlbumName = styled.h2`
     left: 6vw;
     color: #757575;
     padding-top: 5px;
+    padding-right: 50%;
     font-family: "Inter", sans-serif;
     font-size: 0.8vw;
     font-weight: 600;
@@ -106,6 +107,7 @@ export const ArtistName = styled.h3`
     bottom: 2.5vw;
     left: 6vw;
     padding-top: 5px;
+    padding-right: 50%;
     color: #757575;
     font-family: "Inter", sans-serif;
     font-size: 0.8vw;
