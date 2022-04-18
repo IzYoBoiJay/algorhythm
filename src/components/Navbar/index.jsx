@@ -1,6 +1,7 @@
 // Navbar implementation
 import React from "react";
 import { Bars, Nav, NavIcon, NavLink } from "./NavbarElements";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
   return (
@@ -18,16 +19,18 @@ const Navbar = () => {
           <p>Activity</p>
         </NavLink>
 
-        <a
-          href={
-            window.location.protocol +
-            "//" +
-            window.location.hostname +
-            ":4000/logout"
-          }
+        <button
+          onClick={() => {
+            Cookies.remove("spotify_access_token");
+            window.location.reload();
+          }}
         >
           Logout
-        </a>
+        </button>
+        <iframe
+          style={{ display: "none" }}
+          src="https://spotify.com/logout"
+        ></iframe>
       </Nav>
     </>
   );

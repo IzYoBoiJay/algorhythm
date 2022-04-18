@@ -6,6 +6,7 @@ import PlaybackContext from "./contexts/PlaybackContext";
 import PostContext from "./contexts/PostContext";
 
 import axios from "axios";
+import Cookies from "js-cookie";
 
 //Pages
 import Dashboard from "./pages/Dashboard";
@@ -36,12 +37,7 @@ const App = (props) => {
 
   useEffect(() => {
     axios
-      .get(
-        window.location.protocol +
-          "//" +
-          window.location.hostname +
-          ":4001/get_posts"
-      )
+      .get(process.env.REACT_APP_SERVER_DOMAIN + "/posts/get_posts")
       .then((response) => {
         if (response.status === 200) setPosts(response.data);
       });
@@ -50,18 +46,7 @@ const App = (props) => {
   useEffect(() => console.log(posts), [posts]);
 
   useEffect(() => {
-    const getToken = async () => {
-      const response = await fetch(
-        window.location.protocol +
-          "//" +
-          window.location.hostname +
-          ":4000/auth_token"
-      );
-      const json = await response.json();
-      setAuthState((prevState) => ({ ...prevState, token: json.access_token }));
-      console.log(json);
-    };
-    getToken();
+    setAuthState({ ...authState, token: Cookies.get("spotify_access_token") });
   }, []);
 
   useEffect(() => {

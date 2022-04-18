@@ -28,25 +28,22 @@ const CreatePostModal = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(
-        window.location.protocol +
-          "//" +
-          window.location.hostname +
-          ":4001/create_post",
-        {
-          text: input.text,
-          tags: input.tags.split(" "),
-          username: profile.display_name,
-          userLink: profile.uri,
-          profilepic: (profile.images.length > 0 && profile.images[0].url ? profile.images[0].url : DefaultUserSvg),
-          picture: playbackState.picture,
-          title: playbackState.songName,
-          album: playbackState.album,
-          artist: playbackState.artist,
-          songLink: playbackState.songLink,
-          created_at: Date.now(),
-        }
-      )
+      .post(process.env.REACT_APP_SERVER_DOMAIN + "/posts/create_post", {
+        text: input.text,
+        tags: input.tags.split(" "),
+        username: profile.display_name,
+        userLink: profile.uri,
+        profilepic:
+          profile.images.length > 0 && profile.images[0].url
+            ? profile.images[0].url
+            : DefaultUserSvg,
+        picture: playbackState.picture,
+        title: playbackState.songName,
+        album: playbackState.album,
+        artist: playbackState.artist,
+        songLink: playbackState.songLink,
+        created_at: Date.now(),
+      })
       .then((response) => {
         if (response.status === 200) {
           navigate(-1);

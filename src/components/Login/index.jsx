@@ -18,12 +18,7 @@ function Login() {
             Hop on the beat and see other people share what they're jamming to
           </LoginP>
           <LoginHyperlink
-            href={
-              window.location.protocol +
-              "//" +
-              window.location.hostname +
-              ":4000/login"
-            }
+            href={process.env.REACT_APP_SERVER_DOMAIN + "/auth/login"}
           >
             Login with Spotify
           </LoginHyperlink>
