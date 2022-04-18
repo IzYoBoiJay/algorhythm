@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Routes, Route, Navigate } from "react-router-dom";
+import {
+  useLocation,
+  Routes,
+  Route,
+  Navigate,
+  useSearchParams,
+} from "react-router-dom";
 
 import UserContext from "./contexts/UserContext";
 import PlaybackContext from "./contexts/PlaybackContext";
 import PostContext from "./contexts/PostContext";
 
 import axios from "axios";
-import Cookies from "js-cookie";
 
 //Pages
 import Dashboard from "./pages/Dashboard";
@@ -35,18 +40,30 @@ const App = (props) => {
 
   const [posts, setPosts] = useState([]);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_SERVER_DOMAIN + "/posts/get_posts")
       .then((response) => {
         if (response.status === 200) setPosts(response.data);
       });
+    if (searchParams.has("token")) {
+      let token = searchParams.get("token");
+      if (token) {
+        searchParams.delete("token");
+        localStorage.setItem("spotify_access_token", token);
+      }
+    }
   }, [useLocation().pathname]);
 
   useEffect(() => console.log(posts), [posts]);
 
   useEffect(() => {
-    setAuthState({ ...authState, token: Cookies.get("spotify_access_token") });
+    setAuthState({
+      ...authState,
+      token: localStorage.getItem("spotify_access_token"),
+    });
   }, []);
 
   useEffect(() => {
