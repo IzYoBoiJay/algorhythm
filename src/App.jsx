@@ -51,8 +51,8 @@ const App = (props) => {
     if (searchParams.has("token")) {
       let token = searchParams.get("token");
       if (token) {
-        searchParams.delete("token");
         localStorage.setItem("spotify_access_token", token);
+        window.history.replaceState(null, null, window.location.pathname);
       }
     }
   }, [useLocation().pathname]);
