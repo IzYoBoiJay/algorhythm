@@ -48,7 +48,6 @@ export const Username = styled.h1`
 
     //breakpoints
     @media screen and (max-width: 900px) {
-        font-size: 2vw;
     }
     @media screen and (max-width: 750px) {
         font-size: 2.5vw;
@@ -65,7 +64,7 @@ export const PostText = styled.p`
     font-family: "Inter", sans-serif;
     font-size: 1vw;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 1.35em;
     
     //breakpoints
     @media screen and (max-width: 900px) {
@@ -86,7 +85,7 @@ export const PostFooter = styled.h1`
     font-family: "Inter", sans-serif;
     font-size: 1vw;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 1.25em;
 
     //breakpoints
     @media screen and (max-width: 900px) {
