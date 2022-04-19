@@ -63,13 +63,13 @@ export const LogoutButton = styled.div`
   cursor: pointer;
   // margin: 1em;
   padding: 0.5em 1em;
-  border: 1px solid #1DB954;
+  border: 1px solid #1db954;
   border-radius: 20px;
 
   &:hover,
-    &:focus {
-      background-color: #1DB954;
-      color: white;
+  &:focus {
+    background-color: #1db954;
+    color: white;
   }
   @media screen and (max-width: 400px) {
     position: absolute;
