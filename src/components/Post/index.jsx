@@ -22,7 +22,7 @@ const Post = (props) => {
       <PostText>{props.post.text}</PostText>
       <SongCard song={props.post} />
       <PostFooter>
-        <TimeAgo
+      <TimeAgo
           datetime={props.post.created_at}
           opts={{ minInterval: "60" }}
         />
@@ -31,7 +31,7 @@ const Post = (props) => {
           <span>{hashtag}&ensp;</span>
         ))}
       </PostFooter>
-      <EmojiTray />
+      <EmojiTray postID={props.post._id} />
       <EmojiReaction reactions={props.post.reactions} />
     </PostContainer>
   );
