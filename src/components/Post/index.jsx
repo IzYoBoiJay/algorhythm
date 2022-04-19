@@ -22,7 +22,7 @@ const Post = (props) => {
       <PostText>{props.post.text}</PostText>
       <SongCard song={props.post} />
       <PostFooter>
-        <TimeAgo
+      <TimeAgo
           datetime={props.post.created_at}
           opts={{ minInterval: "60" }}
         />

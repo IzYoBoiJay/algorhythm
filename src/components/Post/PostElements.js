@@ -41,10 +41,12 @@ export const Username = styled.h1`
     padding-top: 10%;
     position: relative;
     color: #757575;
+    word-break:break-word;
     font-family: "Inter", sans-serif;
     font-size: 1vw;
     font-weight: 400;
     line-height: 20px;
+    line-height: 1.35em;
 
     //breakpoints
     @media screen and (max-width: 900px) {
@@ -61,6 +63,7 @@ export const PostText = styled.p`
     position: relative;
     padding-top: 6%;
     padding-bottom: 6%;
+    word-break:break-word;
     font-family: "Inter", sans-serif;
     font-size: 1vw;
     font-weight: 400;
@@ -82,6 +85,7 @@ export const PostFooter = styled.h1`
     position: relative;
     padding-top: 10%;
     color: #757575;
+    word-break:break-word;
     font-family: "Inter", sans-serif;
     font-size: 1vw;
     font-weight: 400;
