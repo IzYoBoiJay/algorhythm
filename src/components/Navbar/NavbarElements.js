@@ -43,9 +43,10 @@ export const NavLink = styled(Link)`
   p {
     &:hover,
     &:focus {
-      color: #1DB954;
+      color: #1db954;
       transform: translate(0px, -5px);
     }
+  }
 
   @media screen and (max-width: 400px) {
     position: absolute;
