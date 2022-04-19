@@ -9,7 +9,7 @@ const emoji_map= {
   thumbsup: '👍'
 };
 
-const EmojiReaction = () => {
+const EmojiReaction = (reactions) => {
 
   function sendEmoji(emoji) {
     /* send emoji to the backend here */

@@ -22,8 +22,8 @@ const Post = (props) => {
           <span>{hashtag}&ensp;</span>
         ))}
       </PostFooter>
-      <EmojiTray />
-      <EmojiReaction />
+      <EmojiTray postID={props.post._id} />
+      <EmojiReaction reactions={props.post.reactions} />
     </PostContainer>
   );
 };
