@@ -1,19 +1,23 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 import { Emoji, Container } from "./EmojiReactionElements";
 
 import UserContext from "../../contexts/UserContext";
 
 const EmojiReaction = (props) => {
-  const [emojiSet, setEmojiSet] = useState([
+  const defaultEmojiSet = [
     { name: "fire", emoji: "🔥", clicked: false },
     { name: "heart", emoji: "❤️", clicked: false },
     { name: "smile", emoji: "😊", clicked: false },
     { name: "thumbsup", emoji: "👍", clicked: false },
-  ]);
+  ];
+  const [emojiSet, setEmojiSet] = useState(defaultEmojiSet);
   const profile = useContext(UserContext).user;
   const [reacted, setReacted] = useState(false);
+
+  let location = useLocation();
 
   const sendEmoji = (props) => {
     if (!emojiSet.find((emoji) => emoji.clicked)) {
@@ -40,6 +44,8 @@ const EmojiReaction = (props) => {
   };
 
   useEffect(() => {
+    setReacted(false);
+    setEmojiSet(defaultEmojiSet);
     let obj;
     if (profile != null) {
       if (
@@ -47,18 +53,19 @@ const EmojiReaction = (props) => {
           (reaction) => reaction.reactedBy === profile.uri
         ))
       ) {
-        setEmojiSet((prev) =>
-          prev.map((emoji) =>
+        setEmojiSet(
+          defaultEmojiSet.map((emoji) =>
             emoji.name === obj.emoji ? { ...emoji, clicked: true } : emoji
           )
         );
       }
     }
-  }, [profile]);
+  }, [profile, location.pathname, props]);
 
   return (
     <Container>
       <div>
+        <span>{"postID: " + props.postID}</span>
         {emojiSet.map((obj, idx) => (
           <Emoji
             blueNumber={obj.clicked}
