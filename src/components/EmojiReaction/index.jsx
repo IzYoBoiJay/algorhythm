@@ -65,7 +65,6 @@ const EmojiReaction = (props) => {
   return (
     <Container>
       <div>
-        <span>{"postID: " + props.postID}</span>
         {emojiSet.map((obj, idx) => (
           <Emoji
             blueNumber={obj.clicked}
