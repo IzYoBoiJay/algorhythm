@@ -65,8 +65,6 @@ const App = (props) => {
     }
   }, [location.pathname]);
 
-  useEffect(() => console.log(posts), [posts]);
-
   const getNewToken = (refreshToken) => {
     axios
       .post(process.env.REACT_APP_SERVER_DOMAIN + "/auth/new_token", {

@@ -15,8 +15,8 @@ const ExplorePage = () => {
           <WebPlayback />
           {posts
             .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-            .map((post) => (
-              <Post post={post} />
+            .map((post, idx) => (
+              <Post post={post} key={"post" + idx} />
             ))}
         </Masonry>
       </ResponsiveMasonry>

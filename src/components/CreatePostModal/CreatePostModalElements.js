@@ -30,17 +30,15 @@ export const ModalContainer = styled.div`
   @media screen and (max-width: 900px) {
     width: 490px;
     height: 525px;
-
   }
   @media screen and (max-width: 750px) {
     width: 390px;
     height: 425px;
-
   }
   @media screen and (max-width: 600px) {
     width: 290px;
     height: 325px;
-  }   
+  }
 `;
 
 export const CloseButton = styled(CloseO)`
@@ -64,7 +62,7 @@ export const CloseButton = styled(CloseO)`
   @media screen and (max-width: 600px) {
     width: 40px;
     height: 40px;
-  }   
+  }
 `;
 
 export const ModalForm = styled.form`
@@ -85,17 +83,15 @@ export const TextBox = styled.textarea`
   @media screen and (max-width: 900px) {
     width: 460px;
     height: 300px;
-
   }
   @media screen and (max-width: 750px) {
     width: 360px;
     height: 200px;
-
   }
   @media screen and (max-width: 600px) {
     width: 260px;
     height: 100px;
-  }   
+  }
 `;
 
 export const HashtagsBox = styled.input`
@@ -117,7 +113,7 @@ export const HashtagsBox = styled.input`
   }
   @media screen and (max-width: 600px) {
     width: 260px;
-  }   
+  }
 `;
 
 export const SubmitButton = styled.input`
@@ -154,8 +150,7 @@ export const SubmitButton = styled.input`
   }
   @media screen and (max-width: 600px) {
     padding: 8px 20px;
-  }   
-  
+  }
 `;
 
 export const CurrentlyPlaying = styled.p`
@@ -168,14 +163,12 @@ export const CurrentlyPlaying = styled.p`
   @media screen and (max-width: 900px) {
     font-size: 14px;
     right: 45%;
-
   }
   @media screen and (max-width: 750px) {
     font-size: 12px;
     right: 35%;
-
   }
   @media screen and (max-width: 600px) {
     font-size: 10px;
-  }  
+  }
 `;

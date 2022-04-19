@@ -22,17 +22,17 @@ const Post = (props) => {
       <PostText>{props.post.text}</PostText>
       <SongCard song={props.post} />
       <PostFooter>
-      <TimeAgo
+        <TimeAgo
           datetime={props.post.created_at}
           opts={{ minInterval: "60" }}
         />
         &ensp;
-        {props.post.tags.map((hashtag) => (
-          <span>{hashtag}&ensp;</span>
+        {props.post.tags.map((hashtag, idx) => (
+          <span key={"tag" + idx}>{hashtag}&ensp;</span>
         ))}
       </PostFooter>
-      <EmojiTray postID={props.post._id} />
-      <EmojiReaction reactions={props.post.reactions} />
+      {/* <EmojiTray postID={props.post._id} /> */}
+      <EmojiReaction reactions={props.post.reactions} postID={props.post._id} />
     </PostContainer>
   );
 };

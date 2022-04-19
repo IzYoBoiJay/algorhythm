@@ -44,7 +44,7 @@ const EmojiTray = (props) => {
     console.log(emoji);
 
     axios
-      .post("/posts/add_reaction", emoji) //end post
+      .post(process.env.REACT_APP_SERVER_DOMAIN + "/posts/add_reaction", emoji) //end post
       .then((res) => {
         console.log("Emoji Tray Response: ");
         console.log(res);

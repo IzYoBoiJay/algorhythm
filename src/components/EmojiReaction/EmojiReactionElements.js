@@ -1,11 +1,20 @@
 import styled from "styled-components";
+import { CloseO } from "@styled-icons/evil/CloseO";
 
-export const ReactContainer = styled.div`
+export const Emoji = styled.span`
+  ${({ blueNumber }) =>
+    blueNumber &&
+    `
+    color: blue;
+  `}
+`;
+
+export const Container = styled.div`
   position: relative;
   border-radius: 15px;
   border: 1.75px solid #e1e1e1;
   display: inline-block;
-  width: 50%;
+  width: fit-content;
   margin-top: 13%;
   padding: 1%;
   span {
