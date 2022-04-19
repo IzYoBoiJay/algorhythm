@@ -44,7 +44,7 @@ export const NowPlayingName = styled.h1`
   }
   @media screen and (max-width: 600px) {
     font-size: 3.1vw;
-  }     
+  }
 `;
 
 export const NowPlayingArtist = styled.h2`
@@ -63,8 +63,7 @@ export const NowPlayingArtist = styled.h2`
   }
   @media screen and (max-width: 600px) {
     font-size: 3.1vw;
-  }     
-  
+  }
 `;
 
 export const NowPlayingAlbum = styled.h2`
@@ -83,7 +82,7 @@ export const NowPlayingAlbum = styled.h2`
   }
   @media screen and (max-width: 600px) {
     font-size: 3.1vw;
-  }     
+  }
 `;
 
 export const WarningText = styled.h1`
@@ -103,7 +102,7 @@ export const WarningText = styled.h1`
   }
   @media screen and (max-width: 600px) {
     font-size: 3vw;
-  }     
+  }
 `;
 
 export const Box = styled.div`
@@ -147,7 +146,7 @@ export const Share = styled(FiShare)`
   }
   @media screen and (max-width: 600px) {
     font-size: 3.3vw;
-  }       
+  }
 `;
 
 export const Play = styled(BsPlayCircle)`
