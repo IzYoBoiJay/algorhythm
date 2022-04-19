@@ -31,11 +31,7 @@ const Post = (props) => {
           <span>{hashtag}&ensp;</span>
         ))}
       </PostFooter>
-<<<<<<< HEAD
       <EmojiTray postID={props.post._id} />
-=======
-      <EmojiTray />
->>>>>>> dc8da8b942f4d49ae0de1debef510895d07063ea
       <EmojiReaction reactions={props.post.reactions} />
     </PostContainer>
   );
