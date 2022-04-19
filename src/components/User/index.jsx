@@ -19,15 +19,25 @@ function User(props) {
         <UserContainer>
           <ProfilePicture
             image={
-              profile.images.length > 0 && profile.images[0].url
+              profile.images != null &&
+              profile.images.length > 0 &&
+              profile.images[0].url
                 ? profile.images[0].url
                 : DefaultUserSvg
             }
             alt="Avatar"
             onClick={() => (window.location.href = profile.uri)}
           />
-          <UsernameContainer width={profile.display_name.length * 25}>
-            <Username>{profile.display_name}</Username>
+          <UsernameContainer
+            width={
+              profile.display_name != null && profile.display_name.length * 25
+            }
+          >
+            {profile.display.name != null ? (
+              <Username>{profile.display_name}</Username>
+            ) : (
+              <></>
+            )}
           </UsernameContainer>
           {/* <p>{profile.followers.total} Followers</p> */}
         </UserContainer>

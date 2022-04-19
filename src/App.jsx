@@ -23,6 +23,7 @@ import { GlobalStyle } from "./globalStyles";
 import Login from "./components/Login";
 
 const App = (props) => {
+  console.log("TOKEN: "+localStorage.getItem("spotify_access_token"));
   let location = useLocation();
   const [authState, setAuthState] = useState({
     token: null,
@@ -55,7 +56,7 @@ const App = (props) => {
         window.history.replaceState(null, null, window.location.pathname);
       }
     }
-  }, [useLocation().pathname]);
+  }, [location.pathname]);
 
   useEffect(() => console.log(posts), [posts]);
 
