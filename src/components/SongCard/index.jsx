@@ -4,7 +4,9 @@ import { AlbumName, ArtistName, SongContainer, SongPicture, Title } from './Song
 const SongCard = (props) => {
   return (
     <SongContainer>
-      <SongPicture image={props.song.picture}/>
+      <SongPicture
+      image={props.song.picture}
+      onClick={() => (window.location.href = props.song.songLink)}/>
       <Title>{props.song.title}</Title>
       <AlbumName>{props.song.album}</AlbumName>
       <ArtistName>{props.song.artist}</ArtistName>
