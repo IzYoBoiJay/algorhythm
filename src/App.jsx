@@ -46,7 +46,17 @@ const App = (props) => {
     axios
       .get(process.env.REACT_APP_SERVER_DOMAIN + "/posts/get_posts")
       .then((response) => {
-        if (response.status === 200) setPosts(response.data);
+        if (response.status === 200) {
+          if (location.pathname === "/activity") {
+            setPosts(
+              response.data.filter(
+                (post) => post.userLink === authState.user.uri
+              )
+            );
+          } else {
+            setPosts(response.data);
+          }
+        }
       });
     if (searchParams.has("token")) {
       let token = searchParams.get("token");
@@ -136,6 +146,7 @@ const App = (props) => {
             >
               <Route exact path="/share" element={<CreatePostModal />} />
             </Route>
+            <Route exact path="/activity" element={<Dashboard />} />
             <Route path="/404" element={<PageNotFound />} />
           </Routes>
         </PostContext.Provider>
