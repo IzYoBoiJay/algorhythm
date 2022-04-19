@@ -28,16 +28,8 @@ function User(props) {
             alt="Avatar"
             onClick={() => (window.location.href = profile.uri)}
           />
-          <UsernameContainer
-            width={
-              profile.display_name != null && profile.display_name.length * 25
-            }
-          >
-            {profile.display.name != null ? (
-              <Username>{profile.display_name}</Username>
-            ) : (
-              <></>
-            )}
+          <UsernameContainer width={profile.display_name != null && profile.display_name.length * 25}>
+            <Username>{profile.display_name}</Username>
           </UsernameContainer>
           {/* <p>{profile.followers.total} Followers</p> */}
         </UserContainer>
