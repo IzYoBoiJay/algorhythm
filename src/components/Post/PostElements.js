@@ -48,6 +48,7 @@ export const Username = styled.h1`
 
     //breakpoints
     @media screen and (max-width: 900px) {
+        font-size: 2vw;
     }
     @media screen and (max-width: 750px) {
         font-size: 2.5vw;
