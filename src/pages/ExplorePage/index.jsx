@@ -8,13 +8,13 @@ import PostContext from "../../contexts/PostContext";
 const ExplorePage = () => {
 
   const [posts, setPosts] = useContext(PostContext);
-  
+
   return (
     <ExploreContainer>
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
         <Masonry gutter="20px">
           <WebPlayback/>
-          {posts.map((post) => (
+          {posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).map((post) => (
             <Post post={post} />
           ))}
         </Masonry>

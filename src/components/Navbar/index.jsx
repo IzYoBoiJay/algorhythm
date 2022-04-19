@@ -26,9 +26,9 @@ const Navbar = () => {
           <p>Activity</p>
         </NavLink>
 
-        <NavLink  onClick={ logout } to="/">
+        <LogoutButton  onClick={ logout } to="/">
           <p>Logout</p>
-        </NavLink>
+        </LogoutButton>
 
       </Nav>
     </>
