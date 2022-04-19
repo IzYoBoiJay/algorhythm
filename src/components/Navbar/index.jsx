@@ -15,7 +15,7 @@ const Navbar = () => {
           <h1>ALGORHYTHM</h1>
         </NavLink>
 
-        <NavLink to="/explore">
+        <NavLink to="/"> {/* Explore Page is Home Page */}
           <p>Explore</p>
         </NavLink>
 
