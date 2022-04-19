@@ -1,8 +1,16 @@
 // Navbar implementation
 import React from "react";
-import { Bars, Nav, NavIcon, NavLink } from "./NavbarElements";
+import { Bars, Nav, NavIcon, NavLink, LogoutButton } from "./NavbarElements";
 
 const Navbar = () => {
+
+  function logout() {
+
+    localStorage.removeItem("spotify_access_token");
+    window.location.reload();
+
+  }
+
   return (
     <>
       <Nav>
@@ -18,14 +26,10 @@ const Navbar = () => {
           <p>Activity</p>
         </NavLink>
 
-        <button
-          onClick={() => {
-            localStorage.removeItem("spotify_access_token");
-            window.location.reload();
-          }}
-        >
-          Logout
-        </button>
+        <LogoutButton  onClick={ logout } to="/">
+          <p>Logout</p>
+        </LogoutButton>
+
       </Nav>
     </>
   );
