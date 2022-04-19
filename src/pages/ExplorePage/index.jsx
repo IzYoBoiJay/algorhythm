@@ -2,21 +2,22 @@ import React, { useContext, useEffect } from "react";
 import Post from "../../components/Post";
 import WebPlayback from "../../components/WebPlayback/WebPlayback";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import {ExploreContainer} from "./ExplorePageElements";
+import { ExploreContainer } from "./ExplorePageElements";
 import PostContext from "../../contexts/PostContext";
 
 const ExplorePage = () => {
-
   const [posts, setPosts] = useContext(PostContext);
 
   return (
     <ExploreContainer>
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
         <Masonry gutter="20px">
-          <WebPlayback/>
-          {posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).map((post) => (
-            <Post post={post} />
-          ))}
+          <WebPlayback />
+          {posts
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+            .map((post, idx) => (
+              <Post post={post} key={"post" + idx} />
+            ))}
         </Masonry>
       </ResponsiveMasonry>
     </ExploreContainer>

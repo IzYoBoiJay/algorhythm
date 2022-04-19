@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+
+import UserContext from "../../contexts/UserContext";
 
 import {
   Tray,
@@ -8,43 +11,99 @@ import {
   Counter,
 } from "./EmojiTrayElements";
 
-const emoji_map = {
-  fire: "🔥",
-  heart: "❤️",
-  smile: "😊",
-  thumbsup: "👍",
-};
+/*
+const reactions = [
+  {
+    emoji: "fire",
+    reactedBy: [],
+  },
+  {
+    emoji: "heart",
+    reactedBy: [],
+  },
+  {
+    emoji: "smile",
+    reactedBy: [],
+  },
+  {
+    emoji: "thumbsup",
+    reactedBy: [],
+  },
+];
+*/
 
-const EmojiTray = () => {
+const EmojiTray = (props) => {
+  const profile = useContext(UserContext).user;
+
   const [showEmojis, setShowEmojis] = useState(false);
 
-  const [fireCount, setFC] = useState(0);
-  const [heartCount, setHC] = useState(0);
-  const [smileCount, setSC] = useState(0);
-  const [thumbsupCount, setTUC] = useState(0);
+  //const [emojiReactions, setEmojiReactions] = useState(reactions);
 
   function sendEmoji(emoji) {
+    console.log("Emoji Object: ");
     console.log(emoji);
 
-    if (emoji == "fire") {
-      setFC(fireCount + 1);
-    } else if (emoji == "heart") {
-      setHC(heartCount + 1);
-    } else if (emoji == "smile") {
-      setSC(smileCount + 1);
-    } else if (emoji == "thumbsup") {
-      setTUC(thumbsupCount + 1);
-    }
-  }
+    axios
+      .post(process.env.REACT_APP_SERVER_DOMAIN + "/posts/add_reaction", emoji) //end post
+      .then((res) => {
+        console.log("Emoji Tray Response: ");
+        console.log(res);
+      }) //end then
+      .catch((err) => {
+        console.log("EmojiTray Error: ");
+        console.log(err);
+      }); //end catch
+  } //end sendEmoji
 
   return (
     <Tray>
       {showEmojis && (
         <Emojis>
-          <EmojiButton onClick={() => sendEmoji("fire")}>🔥</EmojiButton>
-          <EmojiButton onClick={() => sendEmoji("heart")}>❤️</EmojiButton>
-          <EmojiButton onClick={() => sendEmoji("smile")}>😊</EmojiButton>
-          <EmojiButton onClick={() => sendEmoji("thumbsup")}>👍</EmojiButton>
+          <EmojiButton
+            onClick={() =>
+              sendEmoji({
+                postID: props.postID,
+                emoji: "fire",
+                reactedBy: profile.uri,
+              })
+            }
+          >
+            🔥
+          </EmojiButton>
+
+          <EmojiButton
+            onClick={() =>
+              sendEmoji({
+                postID: props.postID,
+                emoji: "heart",
+                reactedBy: profile.uri,
+              })
+            }
+          >
+            ❤️
+          </EmojiButton>
+          <EmojiButton
+            onClick={() =>
+              sendEmoji({
+                postID: props.postID,
+                emoji: "smile",
+                reactedBy: profile.uri,
+              })
+            }
+          >
+            😊
+          </EmojiButton>
+          <EmojiButton
+            onClick={() =>
+              sendEmoji({
+                postID: props.postID,
+                emoji: "thumbsup",
+                reactedBy: profile.uri,
+              })
+            }
+          >
+            👍
+          </EmojiButton>
         </Emojis>
       )}
       <TrayButtonIcon

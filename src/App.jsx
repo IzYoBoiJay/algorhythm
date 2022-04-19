@@ -23,7 +23,6 @@ import { GlobalStyle } from "./globalStyles";
 import Login from "./components/Login";
 
 const App = (props) => {
-  console.log("TOKEN: " + localStorage.getItem("spotify_access_token"));
   let location = useLocation();
   const [authState, setAuthState] = useState({
     token: null,
@@ -66,24 +65,42 @@ const App = (props) => {
     }
   }, [location.pathname]);
 
-  useEffect(() => console.log(posts), [posts]);
+  const getNewToken = (refreshToken) => {
+    axios
+      .post(process.env.REACT_APP_SERVER_DOMAIN + "/auth/new_token", {
+        refresh_token: refreshToken,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.setItem("spotify_access_token", response.data.token);
+          localStorage.setItem("token_expiration", response.data.expires);
+          console.log("Refreshed token: " + response.data.token);
+        }
+      });
+  };
 
   useEffect(() => {
     setAuthState((state) => {
-      if (
-        state.refresh_token &&
-        state.expiration &&
-        state.expiration < Date.now()
-      ) {
-        axios.post(process.env.REACT_APP_SERVER_DOMAIN + "/auth/new_token", {
-          refresh_token: state.refreshToken,
-        });
+      let token = localStorage.getItem("spotify_access_token");
+      let expiration = parseInt(localStorage.getItem("token_expiration"));
+      let refreshToken = localStorage.getItem("spotify_refresh_token");
+      let remainingTime = new Date(expiration) - new Date();
+      console.log(
+        "The current token expires in " + remainingTime / 60000 + " minutes"
+      );
+      if (remainingTime > 0) {
+        setTimeout(
+          () => getNewToken(refreshToken),
+          new Date(expiration) - new Date()
+        );
+      } else {
+        getNewToken(refreshToken);
       }
       return {
         ...state,
-        token: localStorage.getItem("spotify_access_token"),
-        expiration: localStorage.getItem("token_expiration"),
-        refreshToken: localStorage.getItem("spotify_refresh_token"),
+        token,
+        expiration,
+        refreshToken,
       };
     });
   }, []);

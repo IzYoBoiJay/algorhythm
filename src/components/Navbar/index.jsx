@@ -3,12 +3,9 @@ import React from "react";
 import { Bars, Nav, NavIcon, NavLink, LogoutButton } from "./NavbarElements";
 
 const Navbar = () => {
-
   function logout() {
-
     localStorage.removeItem("spotify_access_token");
     window.location.reload();
-
   }
 
   return (
@@ -18,7 +15,9 @@ const Navbar = () => {
           <h1>ALGORHYTHM</h1>
         </NavLink>
 
-        <NavLink to="/explore">
+        <NavLink to="/">
+          {" "}
+          {/* Explore Page is Home Page */}
           <p>Explore</p>
         </NavLink>
 
@@ -26,10 +25,9 @@ const Navbar = () => {
           <p>Activity</p>
         </NavLink>
 
-        <LogoutButton  onClick={ logout } to="/">
+        <LogoutButton onClick={logout} to="/">
           <p>Logout</p>
         </LogoutButton>
-
       </Nav>
     </>
   );

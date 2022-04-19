@@ -26,6 +26,19 @@ export const ModalContainer = styled.div`
   color: wheat;
   display: flex;
   justify-content: center;
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    width: 490px;
+    height: 525px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 390px;
+    height: 425px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 290px;
+    height: 325px;
+  }
 `;
 
 export const CloseButton = styled(CloseO)`
@@ -36,6 +49,19 @@ export const CloseButton = styled(CloseO)`
   right: 0;
   &:hover {
     cursor: pointer;
+  }
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    width: 40px;
+    height: 40px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 40px;
+    height: 40px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 40px;
+    height: 40px;
   }
 `;
 
@@ -54,6 +80,18 @@ export const TextBox = styled.textarea`
   text-align: left;
   padding: 15px 10px 10px 10px;
   border-radius: 1.1em;
+  @media screen and (max-width: 900px) {
+    width: 460px;
+    height: 300px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 360px;
+    height: 200px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 260px;
+    height: 100px;
+  }
 `;
 
 export const HashtagsBox = styled.input`
@@ -65,6 +103,17 @@ export const HashtagsBox = styled.input`
   padding: 15px 10px 15px 10px;
   border-radius: 1.1em;
   margin-top: 10px;
+
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    width: 460px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 360px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 260px;
+  }
 `;
 
 export const SubmitButton = styled.input`
@@ -92,11 +141,34 @@ export const SubmitButton = styled.input`
     cursor: pointer;
     color: #000;
   }
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    padding: 12px 60px;
+  }
+  @media screen and (max-width: 750px) {
+    padding: 10px 30px;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 8px 20px;
+  }
 `;
 
 export const CurrentlyPlaying = styled.p`
   position: absolute;
   font-size: 16px;
   right: 35%;
-  padding-top: 100%;
+  bottom: 10px;
+  left: 0;
+  //breakpoints
+  @media screen and (max-width: 900px) {
+    font-size: 14px;
+    right: 45%;
+  }
+  @media screen and (max-width: 750px) {
+    font-size: 12px;
+    right: 35%;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 10px;
+  }
 `;
