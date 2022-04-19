@@ -23,7 +23,7 @@ import { GlobalStyle } from "./globalStyles";
 import Login from "./components/Login";
 
 const App = (props) => {
-  console.log("TOKEN: "+localStorage.getItem("spotify_access_token"));
+  console.log("TOKEN: " + localStorage.getItem("spotify_access_token"));
   let location = useLocation();
   const [authState, setAuthState] = useState({
     token: null,
@@ -51,8 +51,16 @@ const App = (props) => {
       });
     if (searchParams.has("token")) {
       let token = searchParams.get("token");
+      let expiration = searchParams.get("expires");
+      let refreshToken = searchParams.has("refresh_token")
+        ? searchParams.get("refresh_token")
+        : null;
       if (token) {
         localStorage.setItem("spotify_access_token", token);
+        localStorage.setItem("token_expiration", expiration);
+        if (refreshToken) {
+          localStorage.setItem("spotify_refresh_token", refreshToken);
+        }
         window.history.replaceState(null, null, window.location.pathname);
       }
     }
@@ -61,9 +69,22 @@ const App = (props) => {
   useEffect(() => console.log(posts), [posts]);
 
   useEffect(() => {
-    setAuthState({
-      ...authState,
-      token: localStorage.getItem("spotify_access_token"),
+    setAuthState((state) => {
+      if (
+        state.refresh_token &&
+        state.expiration &&
+        state.expiration < Date.now()
+      ) {
+        axios.post(process.env.REACT_APP_SERVER_DOMAIN + "/auth/new_token", {
+          refresh_token: state.refreshToken,
+        });
+      }
+      return {
+        ...state,
+        token: localStorage.getItem("spotify_access_token"),
+        expiration: localStorage.getItem("token_expiration"),
+        refreshToken: localStorage.getItem("spotify_refresh_token"),
+      };
     });
   }, []);
 
