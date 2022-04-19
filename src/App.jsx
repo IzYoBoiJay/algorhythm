@@ -86,15 +86,18 @@ const App = (props) => {
       let token = localStorage.getItem("spotify_access_token");
       let expiration = parseInt(localStorage.getItem("token_expiration"));
       let refreshToken = localStorage.getItem("spotify_refresh_token");
+      let remainingTime = new Date(expiration) - new Date();
       console.log(
-        "The current token expires in " +
-          (new Date(expiration) - new Date()) / 60000 +
-          " minutes"
+        "The current token expires in " + remainingTime / 60000 + " minutes"
       );
-      setTimeout(
-        () => getNewToken(refreshToken),
-        new Date(expiration) - new Date()
-      );
+      if (remainingTime > 0) {
+        setTimeout(
+          () => getNewToken(refreshToken),
+          new Date(expiration) - new Date()
+        );
+      } else {
+        getNewToken(refreshToken);
+      }
       return {
         ...state,
         token,
